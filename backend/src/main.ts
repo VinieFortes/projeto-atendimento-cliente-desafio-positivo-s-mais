@@ -6,7 +6,9 @@ async function bootstrap() {
   app.enableCors({
     origin: [
         'http://localhost:4200',
-        'https://projeto-atendimento-cliente-desafio-wctkx.onrender.com'],
+        'https://projeto-atendimento-cliente-desafio-wctkx.onrender.com'
+    ],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
