@@ -1,0 +1,66 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <div class="client-info">
+      <img src="images/default-avatar.png" alt="Foto do Cliente" class="client-avatar" />
+      <div class="client-details">
+        <h2>{{ contatoNome() || 'Nome do Cliente' }}</h2>
+        <p>ID: {{ clienteId() }}</p>
+        <p>Canal: {{ contatoCanal() }}</p>
+      </div>
+    </div>
+    <button class="end-chat-button" *ngIf="statusAtendimento() !== 'finalizado'" (click)="encerrarAtendimento()">Encerrar Atendimento</button>
+  </div>
+
+  <div class="mensagens" #mensagensContainer>
+    <div
+      *ngFor="let msg of mensagens(); trackBy: trackByTimestamp"
+      [ngClass]="{
+        'remetente': msg.remetente === 'analista',
+        'cliente': msg.remetente === 'cliente'
+      }"
+      class="mensagem-balao"
+    >
+      <div class="message-content">
+        <div class="message-text">
+          {{ msg.mensagem }}
+        </div>
+        <div class="message-time">
+          {{ msg.timestamp | date:'HH:mm' }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="statusAtendimento() !== 'finalizado'; else AtendimentoFinalizado" class="chat-footer">
+    <form (ngSubmit)="enviarMensagem()" #mensagemForm="ngForm">
+      <input
+        type="text"
+        [ngModel]="novaMensagem()"
+        (ngModelChange)="novaMensagem.set($event)"
+        name="mensagem"
+        placeholder="Digite sua mensagem..."
+        required
+      />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+  <ng-template #AtendimentoFinalizado>
+    <div class="atendimento-finalizado">
+      <div class="atendimento-row">
+        <div class="icon-container">
+          <mat-icon>error_outline</mat-icon>
+        </div>
+        <h2>Atendimento Finalizado</h2>
+      </div>
+
+      <p>O atendimento foi concluído com sucesso. Abaixo está a avaliação do cliente:</p>
+      <div class="avaliacao">
+      <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.filled]="star <= notaCliente">
+        <mat-icon>star</mat-icon>
+      </span>
+        <span *ngIf="notaCliente">Nota: {{ notaCliente }} / 5</span>
+      </div>
+    </div>
+  </ng-template>
+
+</div>

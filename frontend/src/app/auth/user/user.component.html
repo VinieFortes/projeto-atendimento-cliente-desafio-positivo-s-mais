@@ -1,0 +1,17 @@
+<div class="user-card" [class.compact]="isCompact">
+  <img src="images/default-avatar.png" alt="Foto do Cliente" class="client-avatar" *ngIf="isCompact" [matMenuTriggerFor]="menu" />
+  <img src="images/default-avatar.png" alt="Foto do Cliente" class="client-avatar" *ngIf="!isCompact" />
+
+  <div class="user-info" *ngIf="!isCompact">
+    <strong>{{ userName }}</strong><br>
+    <span>{{ userRole }}</span>
+  </div>
+
+  <button *ngIf="!isCompact" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon >arrow_drop_down</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onLogout()">Logout</button>
+  </mat-menu>
+</div>

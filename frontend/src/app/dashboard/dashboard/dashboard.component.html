@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Dashboard</h1>
+  </div>
+
+  <div class="dashboard-content">
+
+    <div class="estatisticas">
+      <div class="card">
+        <h3>Total de Atendimentos</h3>
+        <p>{{ totalAtendimentos }}</p>
+      </div>
+      <div class="card">
+        <h3>Atendimentos em Andamento</h3>
+        <p>{{ atendimentosEmAndamento }}</p>
+      </div>
+      <div class="card">
+        <h3>Atendimentos Respondidos</h3>
+        <p>{{ atendimentosRespondidos }}</p>
+      </div>
+      <div class="card">
+        <h3>Atendimentos Finalizados</h3>
+        <p>{{ atendimentosFinalizados }}</p>
+      </div>
+      <div class="card">
+        <h3>Média de Feedback</h3>
+        <p>{{ mediaFeedback }}</p>
+      </div>
+    </div>
+
+
+    <div class="grafico-pizza">
+      <h3>Distribuição de Atendimentos</h3>
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [options]="pieChartOptions"
+              [type]="pieChartType">
+      </canvas>
+    </div>
+
+    <div class="historico">
+      <h3>Histórico de Atendimentos</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>Analista</th>
+          <th>Cliente</th>
+          <th>Início</th>
+          <th>Fim</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let atendimento of historicoAtendimentos">
+          <td>{{ atendimento.userId.username }}</td>
+          <td>{{ atendimento.clienteId.nome}}</td>
+          <td>{{ atendimento.inicio | date:'short' }}</td>
+          <td>{{ atendimento.fim | date:'short' }}</td>
+          <td>{{ atendimento.status }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

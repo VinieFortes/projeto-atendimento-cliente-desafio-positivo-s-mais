@@ -1,0 +1,148 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.dashboard-container {
+  margin: 0 auto;
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 88vh;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+  }
+
+  .dashboard-content {
+    flex: 1;
+    overflow-y: auto;
+
+    .estatisticas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 30px;
+
+      .card {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 20px;
+        text-align: center;
+        width: 200px;
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        h3 {
+          margin-bottom: 15px;
+          font-size: 1.1em;
+          color: #555;
+        }
+
+        p {
+          font-size: 2em;
+          font-weight: bold;
+          color: #007bff;
+        }
+      }
+    }
+
+    .grafico-pizza {
+      text-align: center;
+      margin-bottom: 30px;
+
+      h3 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      canvas {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    .historico {
+      overflow-y: auto;
+
+      h3 {
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+        th, td {
+          padding: 12px 15px;
+          border-bottom: 1px solid #ddd;
+          text-align: left;
+        }
+
+        th {
+          background-color: #007bff;
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 0.9em;
+        }
+
+        tr:nth-child(even) {
+          background-color: #f4f4f4;
+        }
+
+        tr:hover {
+          background-color: #eaeaea;
+        }
+      }
+    }
+  }
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .dashboard-content {
+      .estatisticas {
+        justify-content: center;
+
+        .card {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+
+      .grafico-pizza {
+        canvas {
+          max-width: 100%;
+        }
+      }
+
+      .historico {
+        table {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}

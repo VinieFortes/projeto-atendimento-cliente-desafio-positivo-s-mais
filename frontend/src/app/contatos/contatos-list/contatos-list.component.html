@@ -1,0 +1,56 @@
+<!-- src/app/contatos-list/contatos-list.component.html -->
+<div class="contatos-container">
+  <h1>Clientes</h1>
+
+  <!-- Container para os filtros -->
+  <div class="filtros-container">
+    <!-- Barra de Pesquisa -->
+    <mat-form-field class="search-field">
+      <mat-label>Pesquisar clientes</mat-label>
+      <input matInput type="text" [(ngModel)]="searchTerm" (input)="applySearch()" placeholder="Nome, email ou telefone">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="contato-list">
+    <mat-card *ngFor="let contato of paginatedContatos()" class="contato-card"
+              (click)="abrirChat(contato)">
+      <mat-card-content>
+        <div class="contato-info">
+          <div>
+            <h3>{{ contato.nome }}</h3>
+            <p>E-mail: <span style="font-weight: bold">{{ contato.email }}</span></p>
+            <p>Telefone: <span style="font-weight: bold">{{ contato.telefone }}</span></p>
+            <p>Canal: <span style="font-weight: bold">{{ contato.canal }}</span></p>
+          </div>
+          <mat-chip
+            [ngClass]="{
+              'status-pendente': contato.status.toLowerCase() === 'aberto',
+              'status-encerrado': contato.status.toLowerCase() === 'finalizado'
+            }">
+            {{ contato.status | titlecase }}
+          </mat-chip>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Paginator -->
+  <mat-paginator [length]="totalContatos"
+                 [pageSize]="contatosPorPagina"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 (page)="onPageChange($event)"
+                 class="pag"
+                 aria-label="Selecione a página">
+  </mat-paginator>
+
+
+  <button *ngIf="isGestor && !isCompact" mat-fab extended color="primary" class="add-button" (click)="openDashboard()">
+    <mat-icon>dashboard</mat-icon>
+    Visualizar Dashboard
+  </button>
+  <button *ngIf="isGestor && isCompact" mat-fab extended color="primary" class="add-button-compact" (click)="openDashboard()">
+    <mat-icon>dashboard</mat-icon>
+    Visualizar Dashboard
+  </button>
+</div>

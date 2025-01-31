@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div class="cardverde">
+    <span>Plataforma de Atendimento ao Cliente</span>
+  </div>
+  <div class="space">
+    <img src="logo-positivo-s-1.svg" alt="Logo" style="position: relative; width: 250px">
+  </div>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-body">
+      <div class="input-group">
+        <label for="username">Usuário</label>
+        <input type="text" id="username" required [(ngModel)]="username" name="username" />
+      </div>
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" required [(ngModel)]="password" name="password" />
+      </div>
+      <button type="submit" [disabled]="!loginForm.form.valid">Entrar</button>
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+    </div>
+  </form>
+  <div class="space"></div>
+</div>
