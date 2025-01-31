@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
+  production: true,
   urlBase: 'https://projeto-atendimento-cliente-desafio.onrender.com',
 };

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 interface LoginResponse {
   access_token: string;
@@ -13,7 +14,7 @@ interface LoginResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private authUrl = 'http://localhost:3000/auth'; // Substitua pela URL correta do backend
+  private authUrl = environment.urlBase + '/auth';
   private currentUserSubject: BehaviorSubject<string | null>;
   public currentUser: Observable<string | null>;
 
