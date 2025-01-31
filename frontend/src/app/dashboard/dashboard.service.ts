@@ -25,7 +25,7 @@ export interface Atendimento {
 })
 export class DashboardService {
   private dashboardUrl = environment.urlBase + '/dashboard';
-  private historicoUrl = environment.urlBase + 'historico-atendimentos';
+  private historicoUrl = environment.urlBase + '/historico-atendimentos';
 
   constructor(private http: HttpClient) { }
 
