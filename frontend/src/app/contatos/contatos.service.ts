@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map, Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 export interface Contato {
   _id?: string;
@@ -23,7 +24,7 @@ export interface PaginatedContatos {
   providedIn: 'root'
 })
 export class ContatosService {
-  private contatosUrl = 'http://localhost:3000/contatos';
+  private contatosUrl = environment.urlBase + '/contatos';
 
   constructor(private http: HttpClient) { }
 

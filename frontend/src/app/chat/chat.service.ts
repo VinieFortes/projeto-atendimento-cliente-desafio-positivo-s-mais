@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 export interface ServerMensagem {
   _id: string;
@@ -23,7 +24,7 @@ export interface Mensagem {
   providedIn: 'root',
 })
 export class ChatService {
-  private chatUrl = 'http://localhost:3000'; // Backend URL
+  private chatUrl = environment.urlBase;
 
   constructor(private http: HttpClient) {}
 

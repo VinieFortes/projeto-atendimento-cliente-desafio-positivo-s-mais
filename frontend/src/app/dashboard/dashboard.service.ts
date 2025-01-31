@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 export interface Estatisticas {
   totalContatos: number;
@@ -23,8 +24,8 @@ export interface Atendimento {
   providedIn: 'root'
 })
 export class DashboardService {
-  private dashboardUrl = 'http://localhost:3000/dashboard';
-  private historicoUrl = 'http://localhost:3000/historico-atendimentos';
+  private dashboardUrl = environment.urlBase + '/dashboard';
+  private historicoUrl = environment.urlBase + 'historico-atendimentos';
 
   constructor(private http: HttpClient) { }
 
