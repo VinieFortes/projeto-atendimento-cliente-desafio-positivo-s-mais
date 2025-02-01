@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './src/app.module';
+import { AppModule } from './app.module';
 import { Model } from 'mongoose';
-import { ContatoDocument } from './src/contatos/schemas/contato.schema';
-import { HistoricoDocument } from './src/historico/schemas/historico.schema';
-import { MensagemDocument } from './src/chat/schemas/mensagem.schema';
-import { UserDocument } from './src/users/schemas/user.schema';
+import { ContatoDocument } from './contatos/schemas/contato.schema';
+import { HistoricoDocument } from './historico/schemas/historico.schema';
+import { MensagemDocument } from './chat/schemas/mensagem.schema';
+import { UserDocument } from './users/schemas/user.schema';
 
 async function bootstrap() {
     const appContext = await NestFactory.createApplicationContext(AppModule);
