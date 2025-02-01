@@ -2,6 +2,17 @@
 
 Este repositório contém a implementação do **backend** e **frontend** do sistema de atendimento ao cliente, desenvolvido como parte do **Desafio Técnico - Positivo S+**.
 
+## 🧠 **Acesso para Testes**
+Como não há opção para criar conta pela interface, utilize as seguintes credenciais para testes:
+
+- **Analista**:
+   - **Usuário**: `analista1`
+   - **Senha**: `senha123`
+- **Gestor**:
+   - **Usuário**: `gestor1`
+   - **Senha**: `senha123`
+
+
 ## 🚀 Tecnologias Utilizadas
 
 ### **Backend**
