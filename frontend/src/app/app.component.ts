@@ -15,9 +15,24 @@ import {UserComponent} from './auth/user/user.component';
   standalone: true,
   styleUrl: './app.component.scss'
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   constructor(public router: Router) {}
   title = 'frontend';
+  isMobile = false;
+
+  ngOnInit(): void {
+    this.checkIfMobile();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkIfMobile();
+  }
+
+  checkIfMobile(): void {
+    this.isMobile = window.innerWidth <= 768;
+    console.log(this.isMobile);
+  }
 
   backRoute(): void {
     this.router.navigate(['/previous-route']);

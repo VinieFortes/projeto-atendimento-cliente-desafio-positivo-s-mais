@@ -3,7 +3,7 @@
     <router-outlet></router-outlet>
 
 
-    <button *ngIf="router.url.includes('/chat') || router.url.includes('/dashboard')"
+    <button *ngIf="(router.url.includes('/chat') || router.url.includes('/dashboard')) && !isMobile"
             mat-fab color="primary" class="back-button"
             (click)="backRoute()">
       <mat-icon>arrow_back</mat-icon>

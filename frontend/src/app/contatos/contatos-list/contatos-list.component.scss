@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .contatos-container {
   margin: 0 auto;
   padding: 2rem;
@@ -123,5 +125,15 @@
 
   .contato-actions {
     margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contatos-container {
+    height: 81vh;
+  }
+  .contato-card {
+    margin-bottom: 0.8rem;
+    transition: box-shadow 0.3s ease;
   }
 }
