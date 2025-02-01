@@ -5,7 +5,6 @@ Este repositório contém a implementação do **backend** e **frontend** do sis
 ## 🚀 Tecnologias Utilizadas
 
 ### **Backend**
-### **Backend**
 - **NestJS** - Framework Node.js para aplicações escaláveis.
 - **MongoDB (Atlas)** - Banco de dados NoSQL utilizado para armazenar contatos, usuários e histórico de mensagens.
 - **Mongoose** - ODM para modelagem e manipulação de dados MongoDB.
