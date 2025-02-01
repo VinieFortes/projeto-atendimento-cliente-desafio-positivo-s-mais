@@ -96,6 +96,14 @@ button:disabled {
 }
 
 @media (max-width: 480px) {
+  .login-container{
+    display: flex;
+    height: 60vh;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+  }
+
   form {
     padding: 24px;
   }
