@@ -18,6 +18,7 @@ export interface Atendimento {
   inicio: Date;
   fim: Date;
   status: string;
+  nota: number;
 }
 
 @Injectable({

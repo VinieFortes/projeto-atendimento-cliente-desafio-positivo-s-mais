@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  urlBase: 'https://projeto-atendimento-cliente-desafio.onrender.com',
+  urlBase: 'http://localhost:3000',
 };

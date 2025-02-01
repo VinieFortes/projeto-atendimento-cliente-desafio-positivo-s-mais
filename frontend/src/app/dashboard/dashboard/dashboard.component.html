@@ -48,19 +48,35 @@
           <th>Cliente</th>
           <th>Início</th>
           <th>Fim</th>
+          <th>Nota</th>
           <th>Status</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let atendimento of historicoAtendimentos">
+        <tr *ngFor="let atendimento of paginatedAtendimentos">
           <td>{{ atendimento.userId.username }}</td>
           <td>{{ atendimento.clienteId.nome}}</td>
           <td>{{ atendimento.inicio | date:'short' }}</td>
           <td>{{ atendimento.fim | date:'short' }}</td>
+          <td>
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <span style="font-size: 26px">{{ atendimento.nota >= star ? '★' : '☆' }}</span>
+            </ng-container>
+          </td>
           <td>{{ atendimento.status }}</td>
         </tr>
         </tbody>
       </table>
+
+      <div class="pagination">
+        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+          Anterior
+        </button>
+        <span>Página {{ currentPage }} de {{ totalPages() }}</span>
+        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages()">
+          Próxima
+        </button>
+      </div>
     </div>
   </div>
 </div>

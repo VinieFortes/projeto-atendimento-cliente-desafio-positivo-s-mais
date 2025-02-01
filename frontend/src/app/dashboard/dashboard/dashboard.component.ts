@@ -26,6 +26,10 @@ export class DashboardComponent implements OnInit {
   // Histórico de Atendimentos
   historicoAtendimentos: Atendimento[] = [];
 
+  // Propriedades para paginação
+  currentPage: number = 1;
+  pageSize: number = 5; // quantidade de registros por página
+
   // Dados dos Gráficos
   public pieChartOptions: ChartConfiguration<'pie'>['options'] = {
     responsive: true,
@@ -67,11 +71,13 @@ export class DashboardComponent implements OnInit {
         this.pieChartData = {
           labels: this.pieChartLabels,
           datasets: [
-            { data: [
+            {
+              data: [
                 this.atendimentosEmAndamento,
                 this.atendimentosRespondidos,
                 this.atendimentosFinalizados
-              ]}
+              ]
+            }
           ]
         };
       },
@@ -81,8 +87,26 @@ export class DashboardComponent implements OnInit {
 
   carregarHistorico() {
     this.dashboardService.getHistoricoAtendimentos().subscribe({
-      next: (historico: Atendimento[]) => this.historicoAtendimentos = historico,
+      next: (historico: Atendimento[]) => {
+        this.historicoAtendimentos = historico;
+        this.currentPage = 1;
+      },
       error: () => console.error('Erro ao carregar histórico de atendimentos')
     });
+  }
+
+  get paginatedAtendimentos(): Atendimento[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.historicoAtendimentos.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.historicoAtendimentos.length / this.pageSize);
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages()) {
+      this.currentPage = page;
+    }
   }
 }
