@@ -22,7 +22,7 @@ import {MatDialog} from '@angular/material/dialog';
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFabButton, MatIcon],
+  imports: [CommonModule, FormsModule, MatIcon],
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
